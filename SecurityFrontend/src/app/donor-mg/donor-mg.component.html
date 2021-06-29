@@ -1,0 +1,231 @@
+
+
+
+<div class="row">
+
+   
+    
+
+  <div class="col-md-4" id="hello" class="card card-container" style="background-color:white;">
+    <h4 style="text-align: center;color:red;">  Add User </h4>
+    <br>
+    <form #f="ngForm"
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      
+      novalidate
+    >
+<!-- 
+      // ID    -->
+
+
+      <div class="form-group">
+        <label  style="color:#0E86D4;" for="form.date"> <h6> ID </h6></label>
+        <input
+          type="number"
+          class="form-control"
+          name="uid"
+          [(ngModel)]="form.uid"
+          required
+          #id="ngModel"
+        />
+        <div class="alert-danger" *ngIf="id.errors && f.submitted">
+          <div *ngIf="id.errors.required"> <h6 > ID is required </h6></div>
+        </div>
+      </div>  
+
+
+      
+      <div class="form-group">
+          <label  style="color:rgb(95, 129, 223);" for="form.date"> <h6> Name </h6></label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            [(ngModel)]="form.uname"
+            required
+            #id="ngModel"
+          />
+          <div class="alert-danger" *ngIf="id.errors && f.submitted">
+            <div *ngIf="id.errors.required"> <h6 > Name is required </h6></div>
+          </div>
+        </div>  
+
+      
+
+      <div class="form-group">
+        <label  style="color:rgb(95, 129, 223);" for="form.date"> <h6> Email </h6></label>
+        <input
+          type="text"
+          class="form-control"
+          name="email"
+          [(ngModel)]="form.emailid"
+          required
+          #date="ngModel"
+        />
+        <div class="alert-danger" *ngIf="date.errors && f.submitted">
+          <div *ngIf="date.errors.required"> <h6 > Email is required </h6></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label  style="color:rgb(95, 129, 223);" for="form.password"> <h6> Password </h6></label>
+        <input
+          type="password"
+          class="form-control"
+          name="Password"
+          [(ngModel)]="form.password"
+          required
+          #date="ngModel"
+        />
+        <div class="alert-danger" *ngIf="date.errors && f.submitted">
+          <div *ngIf="date.errors.required"> <h6 > Password is required </h6></div>
+        </div>
+      </div>
+
+
+
+      
+      <div class="form-group">
+        <label  style="color:rgb(95, 129, 223);" for="form.date"> <h6> Bank Name </h6></label>
+        <input
+          type="text"
+          class="form-control"
+          name="bank name"
+          [(ngModel)]="form.bankName"
+          required
+          #date="ngModel"
+        />
+        <div class="alert-danger" *ngIf="date.errors && f.submitted">
+          <div *ngIf="date.errors.required"> <h6 > Bank Name is required </h6></div>
+        </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <label  style="color:rgb(95, 129, 223);" for="form.date"> <h6> IFSC </h6></label>
+        <input
+          type="text"
+          class="form-control"
+          name="ifsc"
+          [(ngModel)]="form.ifsc"
+          required
+          #date="ngModel"
+        />
+        <div class="alert-danger" *ngIf="date.errors && f.submitted">
+          <div *ngIf="date.errors.required"> <h6 > IFSC is required </h6></div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label  style="color:rgb(95, 129, 223);" for="form.date"> <h6> ACCOUNT NO </h6></label>
+        <input
+          type="text"
+          class="form-control"
+          name="account no"
+          [(ngModel)]="form.accountno"
+          required
+          #date="ngModel"
+        />
+        <div class="alert-danger" *ngIf="date.errors && f.submitted">
+          <div *ngIf="date.errors.required"> <h6 > Account no is required </h6></div>
+        </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <label  style="color:rgb(95, 129, 223);" for="form.date"> <h6> Branch </h6></label>
+        <input
+          type="text"
+          class="form-control"
+          name="branch"
+          [(ngModel)]="form.branch"
+          required
+          #date="ngModel"
+        />
+        <div class="alert-danger" *ngIf="date.errors && f.submitted">
+          <div *ngIf="date.errors.required"> <h6 > Branch is required </h6></div>
+        </div>
+      </div>
+
+
+
+      
+
+       
+      <div class="form-group" >
+        <button style = "background-color: rgb(95, 129, 223);"   (click)="onSubmit()"   class="btn btn-primary btn-block"><h6>Store Details</h6>
+        </button>
+      </div>
+
+        
+      <div class="form-group" >
+        <button style = "background-color: rgb(95, 129, 223);"   (click)="onSubmit()"   class="btn btn-primary btn-block"><h6>Update Details</h6>
+        </button>
+      </div>            
+
+
+
+      <br>
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+       Storing details failed!<br />{{ errorMessage }}
+      </div>
+    </form> 
+  </div>
+
+ <div  class="col-md-8" >
+
+  <button (click)="logout()">  Logout </button>
+
+    <br>
+    <table style="width: 150px; border-color:black;border-width:3px;" >
+        <thead style="background-color:rgb(95, 129, 223);">
+            <tr style="color:white">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email ID</th>
+                <th>Password</th>
+                <th>Bank Name</th>
+                <th>IFSC</th>
+                <th>Account No </th>
+                <th> Branch</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prof of donors">
+              
+            <td>{{prof.uid}} </td>
+              <td>{{prof.uname}} </td>
+              <td>{{prof.emailid}}</td>
+              <td>{{prof.password}} </td>
+              <td>{{prof.bankName}}</td>
+              <td>{{prof.ifsc}}</td>
+              <td>{{prof.accountno}}</td>
+              <td><a href="{{prof.resources}}" download>
+                {{prof.branch}}
+              </a></td>
+              <td>{{prof.classmssg}}</td>
+              <td><button type="button"  href="#hello" (click) = edit(prof)  class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                Edit
+            </button></td>
+       
+                <td><button type="button" class="btn btn-danger" (click) = "clear()"
+                  > Clear</button></td>
+          </tr>
+
+          
+      </tbody>
+   
+    </table>
+
+  </div>
+  
+    
+
+
+</div>

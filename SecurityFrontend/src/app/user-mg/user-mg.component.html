@@ -1,0 +1,98 @@
+<div class="container">
+    <div class="mt-5">
+      <button (click)="logout()"> Logout  </button>
+      <button (click)="nav()" style="margin-left: 30px;"> Go to Main Page </button>  
+      <br/>
+      <br/>
+    
+  
+   
+  
+     
+    <table class="table table-bordered">
+      <thead class="thead">
+          <tr >
+         
+         
+            <th> Class messages </th> 
+            <th>   <form #f="ngForm"
+              name="form"
+              (ngSubmit)="f.form.valid"
+              
+              novalidate
+            >
+            <!-- 
+              // ID    -->
+              <div class="form-group" >
+                <h6> <b>Message Edit Box </b>
+                 </h6>
+                <textarea
+                rows="3"
+                style="border-color:slateblue;"
+                  type="text-area"
+                  class="form-control"
+                  name="id"
+                  [(ngModel)]="form.classmssg"
+                  required
+                  minlength="1"
+                  maxlength="1000"
+                  #id="ngModel"
+                > </textarea>
+                <div class="alert-danger" *ngIf="id.errors && f.submitted">
+                  <div *ngIf="id.errors.required"> <h6 >ID is required </h6></div>
+                  <div *ngIf="id.errors.minlength">
+                   ID must be at least 1 character.
+                  </div>
+                  <div *ngIf="id.errors.maxlength">
+                   ID must be at most 10 characters.
+                  </div>
+                </div>
+              </div>
+              Add your messages / doubts 
+            
+              <br/>
+              <sup> Double tap on Update  </sup>
+            </form> 
+             </th>
+            <th>  Send Personal mail</th>   
+           
+          </tr >
+      </thead>
+      <tbody class="tbody">
+          <tr *ngFor="let doctor of doctors">
+                
+               
+                <td> <sup style="color: blue;"> <u> Group {{doctor.pid}} led by Prof. <b>{{doctor.pname}}</b> for the course <b> {{doctor.course}} </b> </u> <br/> <br/> 
+                     <p style="color: red;"> Today's messages</p> </sup>
+                    
+                    
+                   <sub> {{doctor.classmssg}} </sub></td>
+                
+                <td> 
+     
+    <button type="button"  href="#hello" (click)="edit(doctor)" class="btn btn-primary" data-bs-toggle="modal"
+    data-bs-target="#exampleModal">
+    Edit message                
+  </button>
+  
+  <button style="margin-left: 30px;"type="button"  href="#hello" (click)="clear()" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                Clear Message               
+            </button>
+           
+  
+  <button style="margin-left: 30px;"type="button"  href="#hello" (click)="onSubmit()" class="btn btn-primary" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">
+            Update message               
+        </button>
+
+          
+          </td>
+          <td> <a href = "mailto: {{doctor.emailid}}" > Send Personal message via email  </a>  </td>
+          </tr>
+      </tbody>
+  </table>
+  
+  
+    </div>
+  </div>

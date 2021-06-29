@@ -1,0 +1,31 @@
+<div class="container">
+
+
+  <input type="file" (change)="onFSelec($event)">
+  <button type="button" (click)="onUpload()">Upload</button>
+  <button type="button" (click)="nav()">Check and update your bank credentials</button>
+  <button type="button" (click)="nav2()">Logout</button>
+  </div>
+  
+  <div class="container">
+    <div class="mt-5">
+        <table class="table table-bordered">
+            <thead class="thead">
+                <tr>
+                  <th> Url</th>
+                    <th>Size</th>
+                    <th>name</th>
+                    <th>type</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                <tr *ngFor="let doctor of doctorDetails">
+                      <td><a href="{{doctor.url}}">File</a></td>
+                    <td>{{doctor.size}}</td>
+                    <td>{{doctor.name}}</td>
+                    <td>{{doctor.type}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </div>
